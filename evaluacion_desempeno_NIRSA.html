@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NIRSA | Evaluación de Desempeño</title>
+<style>
+:root{--navy:#102c3b;--blue:#176477;--teal:#2b8990;--aqua:#dff1ef;--gold:#d6a64b;--ink:#20313a;--muted:#687982;--line:#dce5e8;--bg:#f3f7f8;--white:#fff;--red:#a43d3d}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.55 Inter,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(120deg,#0c2635,#15566a);color:white;padding:30px max(5vw,22px) 34px;position:relative;overflow:hidden}
+header:after{content:"";position:absolute;width:340px;height:340px;border:1px solid #ffffff22;border-radius:50%;right:-90px;top:-190px;box-shadow:0 0 0 35px #ffffff0b,0 0 0 75px #ffffff08}
+.brand{display:flex;align-items:center;gap:12px;position:relative;z-index:1}.logo{width:45px;height:45px;border:1px solid #ffffff70;border-radius:12px;display:grid;place-items:center;font-weight:800;letter-spacing:1px;color:#f0c46f}
+.brand small{display:block;color:#c5d9df;letter-spacing:2px;font-size:10px}.brand strong{font-size:18px;letter-spacing:1px}
+.hero{max-width:1100px;margin:34px auto 0;position:relative;z-index:1}.eyebrow{color:#f0c46f;text-transform:uppercase;letter-spacing:2px;font-size:11px;font-weight:700}.hero h1{font-size:clamp(28px,4vw,43px);line-height:1.12;margin:9px 0 12px;max-width:700px}.hero p{max-width:760px;color:#d5e4e8;margin:0}
+main{max-width:1100px;margin:26px auto 60px;padding:0 20px}.intro,.panel,.form-card,.result-card{background:var(--white);border:1px solid var(--line);border-radius:16px;box-shadow:0 8px 24px #1737440a}
+.intro{padding:22px 24px;margin-bottom:22px}.section-kicker{color:var(--teal);font-size:11px;text-transform:uppercase;font-weight:800;letter-spacing:1.5px}.intro h2,.panel h2{margin:4px 0 8px;color:var(--navy);font-size:21px}.intro p{margin:0;color:#53666f}
+.person{padding:22px 24px;margin-bottom:22px}.person-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:16px}.field label{display:block;font-size:12px;font-weight:700;color:#50636c;margin-bottom:6px}.field input,.field select{width:100%;padding:11px 12px;border:1px solid #ccd9dd;border-radius:9px;background:#fff;font:inherit;color:var(--ink);outline:none}.field input:focus,.field select:focus{border-color:var(--teal);box-shadow:0 0 0 3px #2b899018}
+nav{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:22px 0}.nav-btn{border:1px solid var(--line);background:white;color:var(--navy);padding:14px 10px;border-radius:12px;font-weight:750;cursor:pointer;text-align:left;transition:.2s}.nav-btn span{display:block;color:var(--muted);font-size:11px;font-weight:500;margin-top:3px}.nav-btn.active{background:var(--navy);border-color:var(--navy);color:white}.nav-btn.active span{color:#c9dce2}
+.panel{padding:24px}.panel-head{display:flex;justify-content:space-between;gap:20px;align-items:flex-start;border-bottom:1px solid var(--line);padding-bottom:17px;margin-bottom:18px}.panel-head h2{font-size:24px;margin:0 0 5px}.panel-head p{margin:0;color:var(--muted);max-width:760px}.pill{background:#e7f3f2;color:#176477;padding:6px 10px;border-radius:30px;font-size:11px;font-weight:800;white-space:nowrap}
+.instructions{background:#f2f7f8;border-left:3px solid var(--teal);padding:12px 14px;border-radius:7px;color:#52656e;margin:16px 0}.role-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:15px 0}.role-row label{font-size:12px;font-weight:700}.role-row select{padding:9px;border:1px solid var(--line);border-radius:8px;min-width:230px}
+.scale{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 20px}.scale span{font-size:11px;color:#5a6c74;background:#f5f8f9;padding:6px 9px;border-radius:7px}.scale b{color:var(--navy)}
+.question{padding:16px 0;border-bottom:1px solid #edf1f2}.question:last-child{border:0}.q-title{font-weight:700;color:#253c46;margin-bottom:11px}.q-num{color:var(--teal);font-size:12px;font-weight:800;margin-right:8px}.ratings{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.rating-option{position:relative}.rating-option input{position:absolute;opacity:0;pointer-events:none}.rating-option label{display:flex;align-items:center;justify-content:center;gap:7px;border:1px solid var(--line);border-radius:8px;padding:9px 5px;cursor:pointer;color:#52656e;font-size:12px;background:#fff}.rating-option label b{font-size:15px;color:var(--navy)}.rating-option input:checked+label{border-color:var(--teal);background:#e8f5f3;color:#155b61;box-shadow:inset 0 0 0 1px var(--teal)}
+.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px}.btn{border:0;border-radius:9px;padding:12px 18px;font:inherit;font-weight:750;cursor:pointer}.primary{background:var(--teal);color:white}.primary:hover{background:#206f76}.secondary{background:#edf3f5;color:var(--navy)}.hint{font-size:12px;color:var(--muted)}
+.results{margin-top:22px;display:grid;grid-template-columns:1.1fr 1fr;gap:14px}.result-card{padding:20px}.result-card h3{margin:0 0 12px;color:var(--navy);font-size:16px}.score{font-size:36px;font-weight:800;color:var(--teal);line-height:1}.score small{font-size:14px;color:var(--muted);font-weight:600}.level{display:inline-block;margin-top:10px;padding:5px 10px;border-radius:20px;background:#e7f3f2;color:#176477;font-size:12px;font-weight:800}.progress{height:9px;border-radius:10px;background:#e9eff1;overflow:hidden;margin-top:15px}.progress div{height:100%;width:0;background:linear-gradient(90deg,var(--teal),#7bb9ad);transition:width .3s}.record-list{font-size:12px;color:#5c6d75;max-height:180px;overflow:auto}.record{padding:8px 0;border-bottom:1px solid #edf1f2;display:flex;justify-content:space-between;gap:10px}
+footer{text-align:center;padding:20px;color:#829199;font-size:11px}
+.hidden{display:none!important}
+@media(max-width:760px){.person-grid{grid-template-columns:repeat(2,1fr)}nav{grid-template-columns:repeat(2,1fr)}.results{grid-template-columns:1fr}.panel-head{display:block}.pill{display:inline-block;margin-top:10px}}
+@media(max-width:440px){.person-grid{grid-template-columns:1fr}.ratings{gap:4px}.rating-option label{font-size:10px;flex-direction:column;padding:8px 2px}.rating-option label b{font-size:14px}.nav-btn{font-size:12px}}
+@media print{body{background:white}.nav-btn,.actions,nav,footer{display:none!important}.panel,.intro,.person{box-shadow:none;break-inside:avoid}main{max-width:none}}
+</style>
+</head>
+<body>
+<header>
+ <div class="brand"><div class="logo">N</div><div><strong>NIRSA</strong><small>NEGOCIOS INDUSTRIALES REAL NIRSA S.A.</small></div></div>
+ <div class="hero"><div class="eyebrow">Gestión del talento humano</div><h1>Evaluación de desempeño laboral</h1><p>Una herramienta para valorar competencias, fortalecer el trabajo colaborativo y contribuir al cumplimiento de los objetivos de la organización.</p></div>
+</header>
+<main>
+ <section class="intro"><div class="section-kicker">Sobre la organización</div><h2>Negocios Industriales Real NIRSA S.A.</h2><p>NIRSA es una empresa ecuatoriana vinculada a la industria pesquera y alimentaria, reconocida por sus actividades de procesamiento y comercialización de productos del mar, especialmente atún. Su operación requiere coordinación, calidad, productividad y cumplimiento estricto de normas de seguridad e inocuidad. Por ello, el desempeño de cada colaborador es fundamental para mantener procesos eficientes, proteger a las personas y alcanzar las metas organizacionales.</p></section>
+ <section class="panel person"><div class="section-kicker">Datos generales</div><h2>Información de la persona evaluada</h2>
+  <div class="person-grid">
+   <div class="field"><label for="employee">Nombre completo *</label><input id="employee" placeholder="Nombre y apellidos" required></div>
+   <div class="field"><label for="position">Cargo o puesto *</label><input id="position" placeholder="Ej. Operador de producción" required></div>
+   <div class="field"><label for="department">Departamento o área *</label><input id="department" placeholder="Ej. Producción" required></div>
+   <div class="field"><label for="evaldate">Fecha de evaluación *</label><input id="evaldate" type="date" required></div>
+  </div>
+ </section>
+ <div class="section-kicker">Selecciona una modalidad</div>
+ <nav aria-label="Formatos de evaluación">
+  <button class="nav-btn active" data-tab="self">Autoevaluación<span>Valoración personal</span></button>
+  <button class="nav-btn" data-tab="90">Evaluación 90°<span>Jefe inmediato</span></button>
+  <button class="nav-btn" data-tab="180">Evaluación 180°<span>Colaborador y jefe</span></button>
+  <button class="nav-btn" data-tab="360">Evaluación 360°<span>Visión integral</span></button>
+ </nav>
+ <section class="panel">
+  <div class="panel-head"><div><div class="section-kicker">Formato <span id="format-number">01</span> / 04</div><h2 id="form-title">Autoevaluación</h2><p id="form-desc">El colaborador reflexiona sobre su propio rendimiento, sus fortalezas y sus oportunidades de mejora.</p></div><span class="pill" id="question-count">5 preguntas</span></div>
+  <div class="instructions" id="participants">Participa: la persona evaluada, quien responde con honestidad sobre su desempeño durante el periodo de trabajo.</div>
+  <div class="role-row" id="role-wrap"><label for="rater-role">Quién realiza esta valoración:</label><select id="rater-role"><option value="Autoevaluación">La persona evaluada</option></select></div>
+  <div class="scale"><span><b>1</b> Deficiente</span><span><b>2</b> Regular</span><span><b>3</b> Bueno</span><span><b>4</b> Muy bueno</span><span><b>5</b> Excelente</span></div>
+  <form id="evaluation-form">
+   <div id="questions"></div>
+   <div class="actions"><button class="btn primary" type="submit">Enviar evaluación y calcular resultado</button><button class="btn secondary" type="button" id="clear-btn">Limpiar respuestas</button><span class="hint">Debes responder las 5 preguntas para enviar.</span></div>
+  </form>
+ </section>
+ <section class="results">
+  <div class="result-card"><h3>Resultado de esta modalidad</h3><div class="score" id="score">— <small>/ 5.00</small></div><div class="level" id="level">Aún sin evaluar</div><div class="progress"><div id="progress"></div></div><p class="hint" id="score-detail">Completa y envía el formato para conocer el resultado.</p></div>
+  <div class="result-card"><h3>Registros guardados en este navegador</h3><div class="record-list" id="records"><p class="hint">Todavía no hay evaluaciones registradas.</p></div><div class="actions"><button class="btn secondary" type="button" id="export-btn">Descargar resultados CSV</button><button class="btn secondary" type="button" id="print-btn">Imprimir</button></div></div>
+ </section>
+</main>
+<footer>Herramienta académica demostrativa · NIRSA · Evaluación de desempeño laboral</footer>
+<script>
+const forms={
+ self:{number:"01",title:"Autoevaluación",desc:"El colaborador reflexiona sobre su propio rendimiento, sus fortalezas y sus oportunidades de mejora.",participants:"Participa: la persona evaluada, quien responde con honestidad sobre su desempeño durante el periodo de trabajo.",roles:["Autoevaluación"],questions:[
+ "¿Cumplo las tareas asignadas dentro de los tiempos y estándares establecidos?",
+ "¿Mantengo una productividad constante durante mi jornada laboral?",
+ "¿Asumo con responsabilidad mis funciones y reconozco mis errores?",
+ "¿Me adapto a cambios en los procesos, turnos o métodos de trabajo?",
+ "¿Cumplo las normas de seguridad, higiene e inocuidad correspondientes a mi puesto?"
+ ]},
+ "90":{number:"02",title:"Evaluación de 90°",desc:"El jefe inmediato valora el desempeño del colaborador a partir de la observación directa de su trabajo.",participants:"Participa: el jefe o supervisor inmediato de la persona evaluada. La valoración debe basarse en hechos, resultados y comportamientos observables.",roles:["Jefe inmediato / supervisor"],questions:[
+ "¿El colaborador cumple los objetivos y metas establecidos para su puesto?",
+ "¿Entrega sus tareas con calidad y dentro de los plazos requeridos?",
+ "¿Demuestra responsabilidad, puntualidad y compromiso con sus funciones?",
+ "¿Se comunica de manera clara y oportuna con su jefe y equipo de trabajo?",
+ "¿Aplica correctamente los procedimientos de seguridad laboral e inocuidad?"
+ ]},
+ "180":{number:"03",title:"Evaluación de 180°",desc:"Contrasta la percepción del colaborador con la valoración de su jefe inmediato para identificar coincidencias y oportunidades de mejora.",participants:"Participan: la persona evaluada y su jefe inmediato. Cada uno debe completar el mismo formato por separado; el resultado consolidado se calcula con el promedio de ambas valoraciones.",roles:["Persona evaluada","Jefe inmediato"],questions:[
+ "¿Colabora activamente con sus compañeros para alcanzar las metas del área?",
+ "¿Comparte información relevante y escucha las opiniones de los demás?",
+ "¿Organiza sus actividades y prioriza adecuadamente las tareas asignadas?",
+ "¿Resuelve dificultades de su puesto con iniciativa y criterio?",
+ "¿Recibe y aplica la retroalimentación para mejorar su desempeño?"
+ ]},
+ "360":{number:"04",title:"Evaluación de 360°",desc:"Recoge distintas perspectivas sobre el desempeño para obtener una visión integral de las competencias laborales.",participants:"Participan: la persona evaluada, su jefe inmediato, compañeros de trabajo y, cuando corresponda, colaboradores a su cargo. Cada participante completa el formato desde su relación laboral con la persona evaluada.",roles:["Autoevaluación","Jefe inmediato","Compañero/a de trabajo","Colaborador/a a cargo"],questions:[
+ "¿Demuestra liderazgo positivo y orienta a otros cuando la situación lo requiere?",
+ "¿Mantiene relaciones respetuosas y contribuye a un ambiente de trabajo adecuado?",
+ "¿Se comunica con claridad y facilita la coordinación entre personas o áreas?",
+ "¿Propone mejoras y responde de forma constructiva ante los cambios?",
+ "¿Actúa con integridad y promueve el cumplimiento de las normas y objetivos de la empresa?"
+ ]}
+};
+let active="self";
+const $=id=>document.getElementById(id);
+$("evaldate").value=new Date().toISOString().slice(0,10);
+function getRecords(){try{return JSON.parse(localStorage.getItem("nirsa_eval_records")||"[]")}catch(e){return []}}
+function saveRecords(a){localStorage.setItem("nirsa_eval_records",JSON.stringify(a))}
+function render(){
+ const f=forms[active];$("format-number").textContent=f.number;$("form-title").textContent=f.title;$("form-desc").textContent=f.desc;$("participants").textContent=f.participants;$("question-count").textContent=f.questions.length+" preguntas";
+ $("role-wrap").classList.toggle("hidden",f.roles.length===1);
+ $("rater-role").innerHTML=f.roles.map(r=>`<option value="${r}">${r}</option>`).join("");
+ $("questions").innerHTML=f.questions.map((q,i)=>`<div class="question"><div class="q-title"><span class="q-num">0${i+1}</span>${q}</div><div class="ratings">${[1,2,3,4,5].map(n=>`<div class="rating-option"><input type="radio" id="q${i}_${n}" name="q${i}" value="${n}" required><label for="q${i}_${n}"><b>${n}</b>${["Deficiente","Regular","Bueno","Muy bueno","Excelente"][n-1]}</label></div>`).join("")}</div></div>`).join("");
+ $("score").innerHTML='— <small>/ 5.00</small>';$("level").textContent="Aún sin evaluar";$("score-detail").textContent="Completa y envía el formato para conocer el resultado.";$("progress").style.width="0%";renderRecords();
+}
+function levelFor(n){if(n<1.8)return "Desempeño deficiente";if(n<2.6)return "Desempeño regular";if(n<3.4)return "Desempeño bueno";if(n<4.3)return "Desempeño muy bueno";return "Desempeño excelente"}
+function renderRecords(){
+ const list=getRecords().filter(x=>x.format===active && x.employee.toLowerCase()===$("employee").value.trim().toLowerCase());
+ if(!list.length){$("records").innerHTML='<p class="hint">No hay registros de esta modalidad para la persona indicada.</p>';return}
+ const avg=list.reduce((s,x)=>s+x.score,0)/list.length;
+ $("records").innerHTML=`<div class="record"><b>Promedio de valoraciones registradas</b><b>${avg.toFixed(2)} / 5</b></div><div class="record"><span>Participaciones recibidas</span><b>${list.length}</b></div><div class="record"><span>Nivel consolidado</span><b>${levelFor(avg)}</b></div>`+list.map(x=>`<div class="record"><span>${x.rater} · ${x.date}</span><b>${x.score.toFixed(2)}</b></div>`).join("");
+}
+document.querySelectorAll(".nav-btn").forEach(b=>b.addEventListener("click",()=>{active=b.dataset.tab;document.querySelectorAll(".nav-btn").forEach(x=>x.classList.toggle("active",x===b));render()}));
+$("evaluation-form").addEventListener("submit",e=>{
+ e.preventDefault();
+ const employee=$("employee").value.trim(),position=$("position").value.trim(),department=$("department").value.trim(),date=$("evaldate").value;
+ if(!employee||!position||!department||!date){alert("Completa los datos de la persona evaluada antes de enviar.");return}
+ const vals=forms[active].questions.map((_,i)=>{const el=document.querySelector(`input[name="q${i}"]:checked`);return el?Number(el.value):0});
+ if(vals.some(v=>!v)){alert("Responde las cinco preguntas para continuar.");return}
+ const score=vals.reduce((a,b)=>a+b,0)/vals.length,rater=$("rater-role").value;
+ const record={format:active,formatName:forms[active].title,employee,position,department,date,rater,score,answers:vals,submittedAt:new Date().toISOString()};
+ const all=getRecords();all.push(record);saveRecords(all);
+ $("score").innerHTML=`${score.toFixed(2)} <small>/ 5.00</small>`;$("level").textContent=levelFor(score);$("progress").style.width=(score/5*100)+"%";
+ $("score-detail").textContent=`Puntaje: ${vals.reduce((a,b)=>a+b,0)} de 25 puntos · ${vals.length} preguntas respondidas.`;
+ renderRecords();
+ alert("Evaluación registrada en este navegador. Puedes revisar el promedio de las valoraciones guardadas en esta modalidad.");
+});
+$("clear-btn").addEventListener("click",()=>{$("evaluation-form").reset()});
+$("employee").addEventListener("input",renderRecords);
+$("export-btn").addEventListener("click",()=>{
+ const rows=getRecords();if(!rows.length){alert("Todavía no hay resultados para descargar.");return}
+ const header=["Formato","Persona evaluada","Cargo","Área","Fecha","Evaluador","Puntaje promedio","Nivel","Respuestas"];
+ const csv=[header,...rows.map(x=>[x.formatName,x.employee,x.position,x.department,x.date,x.rater,x.score.toFixed(2),levelFor(x.score),x.answers.join("-")])].map(r=>r.map(v=>`"${String(v).replaceAll('"','""')}"`).join(",")).join("\n");
+ const blob=new Blob(["\ufeff"+csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="resultados_evaluacion_NIRSA.csv";a.click();URL.revokeObjectURL(url);
+});
+$("print-btn").addEventListener("click",()=>window.print());
+render();
+</script>
+</body>
+</html>
